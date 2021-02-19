@@ -1,0 +1,22 @@
+--名称
+appname="Root检测"
+--版本号
+appver="1.2"
+--版本
+appcode="3"
+--SDK
+appsdk="15"
+--包名
+packagename="com.znzs.sute"
+--调试模式
+debugmode=true
+--应用权限
+user_permission={
+  "GET_TASKS",
+  "READ_EXTERNAL_STORAGE",
+  "VIBRATE",
+}
+--跳过编译
+skip_compilation={
+
+}
