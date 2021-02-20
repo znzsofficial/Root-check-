@@ -29,6 +29,13 @@ activity.setContentView(loadlayout(layout))
 
 
 
+if a==0 then
+  c0e.setVisibility(View.GONE)
+ else
+  c0r.setVisibility(View.GONE)
+end
+
+
 function 提示(内容,圆角)
   junyang=
   {
@@ -106,26 +113,40 @@ function isNightMode()
 end
 if isNightMode() then
   import "android.graphics.drawable.ColorDrawable"
-  提示("夜间模式有点问题",40)
   back.setBackgroundDrawable(ColorDrawable(0xff2c2c2c))
-  c0.setBackgroundDrawable(ColorDrawable(0xff388E3C))
  else
   import "android.graphics.drawable.ColorDrawable"
   back.setBackgroundDrawable(ColorDrawable(0xffFAFAFA))
 end
 
 
+c1.onClick=function()
+  水珠动画(c1,500)
+end
 
 
+c2.onClick=function()
+  水珠动画(c2,500)
+end
 
-c0.onLongClick=function()
+
+c0e.onLongClick=function()
   activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,50},-1)
-  过渡加载框("...","",500)
+  过渡加载框("刷新中...","",500)
   task(500,function()
     activity.recreate()
   end)
 end
 
+
+
+c0r.onLongClick=function()
+  activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,50},-1)
+  过渡加载框("刷新中...","",500)
+  task(500,function()
+    activity.recreate()
+  end)
+end
 
 
 
@@ -135,7 +156,7 @@ c3.onClick=function()
   电量=信息赋值.getIntExtra("level",0)
   电压=信息赋值.getIntExtra("voltage",0)
   温度=信息赋值.getIntExtra("temperature",0)
-  提示("电池电量"..电量.." %",10)
+  提示("电池电量"..电量.."%",10)
   提示("电池电压"..电压.." mV",10)
   提示("电池温度"..(温度*0.1).." ℃",10)
   提示("屏幕高度"..高度.."px",10)
@@ -149,6 +170,44 @@ c4.onClick=function()
 end
 
 
-c0.onClick=function()
-  showPopMenu(tab0,c0,"菜单")
+c0e.onClick=function()
+  showPopMenu(tab0e,c0e,"菜单")
 end
+
+
+c0r.onClick=function()
+  showPopMenu(tab0r,c0r,"菜单")
+end
+
+back.onLongClick=function()
+  activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,15},-1)
+  showPopMenu(taback,title,"菜单")
+end
+
+
+--函数
+function 波纹(id,颜色)
+  import "android.content.res.ColorStateList"
+  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless}
+  local typedArray =activity.obtainStyledAttributes(attrsArray)
+  ripple=typedArray.getResourceId(0,0)
+  Pretend=activity.Resources.getDrawable(ripple)
+  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))
+  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))
+end
+--用法
+
+ico.onClick=function()
+  波纹(ico,0xff808080)
+end
+
+
+device.onClick=function()
+  波纹(device,0xff808080)
+end
+
+
+ndro.onClick=function()
+  波纹(ndro,0xff808080)
+end
+

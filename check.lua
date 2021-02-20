@@ -32,11 +32,6 @@ if root==true then
 end
 
 
-if pcall(function() activity.getPackageManager().getPackageInfo("com.coderstory.toolkit",0) end) then
-  a=a+1
- else
-end
-
 
 if pcall(function() activity.getPackageManager().getPackageInfo("de.robv.android.xposed.installer",0) end) then
   a=a+1
@@ -44,10 +39,6 @@ if pcall(function() activity.getPackageManager().getPackageInfo("de.robv.android
 end
 
 
-if pcall(function() activity.getPackageManager().getPackageInfo("com.omarea.vaddin",0) end) then
-  a=a+1
- else
-end
 
 if pcall(function() activity.getPackageManager().getPackageInfo("me.weishu.exp",0) end) then
   a=a+1
@@ -66,13 +57,28 @@ if pcall(function() activity.getPackageManager().getPackageInfo("com.qihoo.permm
 end
 
 
-if pcall(function() activity.getPackageManager().getPackageInfo("nil.nadph.qnotified",0) end) then
+
+if File("/sdcard/TWRP").exists() then
   a=a+1
  else
 end
 
 
-if File("/sdcard/TWRP").exists() then
+if File("/system/bin/su").exists() then
+  a=a+1
+ else
+end
+
+
+
+if File("/system/bin/ku").exists() then
+  a=a+1
+ else
+end
+
+
+
+if File("/system/bin/toybox").exists() then
   a=a+1
  else
 end

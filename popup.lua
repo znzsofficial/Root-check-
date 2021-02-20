@@ -145,18 +145,47 @@ function showPopMenu(tab,views,title)
   pops.showAsDropDown(views)
 end
 
-tab0={
-  ["菜单"]={
-    ["无"]=function()
+tab0e={
+  ["更多"]={
+    ["禅定模式"]=function()
+      activity.newActivity("chan")
     end,
   },
   ["返回"]=function()
   end,
   ["隐藏"]=function()
-    水珠动画(c0,500)
+    水珠动画(c0e,500)
     task(500,function()
-      c0.setVisibility(View.GONE)
+      c0e.setVisibility(View.GONE)
     end)
+  end,
+}
+
+
+tab0r={
+  ["更多"]={
+    ["禅定模式"]=function()
+      activity.newActivity("chan")
+    end,
+  },
+  ["返回"]=function()
+  end,
+  ["隐藏"]=function()
+    水珠动画(c0r,500)
+    task(500,function()
+      c0r.setVisibility(View.GONE)
+    end)
+  end,
+}
+
+taback={
+  ["刷新"]=function()
+    过渡加载框("刷新中...","",500)
+    task(500,function()
+      activity.recreate()
+    end)
+  end,
+  ["取消"]=function()
   end,
 }
 
