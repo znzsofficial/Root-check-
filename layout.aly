@@ -9,7 +9,7 @@
     LinearLayout;
     layout_height="wrap_content";
     layout_width="fill";
-    layout_margin="25dp";
+    layout_margin="35dp";
     {
       CircleImageView;
       src="icon.png";
@@ -20,9 +20,9 @@
     {
       TextView;
       text="Root检测";
-      textColor="#C0C0C0";
+      textColor="#3f3f3f";
       textSize="30sp";
-      layout_height="35dp";
+      layout_height="40dp";
       layout_gravity="center";
       id="title";
     };

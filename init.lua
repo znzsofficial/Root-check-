@@ -1,9 +1,9 @@
 --名称
 appname="Root检测"
 --版本号
-appver="1.5"
+appver="1.6"
 --版本
-appcode="6"
+appcode="7"
 --SDK
 appsdk="15"
 --包名

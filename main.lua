@@ -6,6 +6,8 @@ import "android.view.*"
 import "android.content.Intent"
 import "android.content.IntentFilter"
 import "android.content.Context"
+import "android.graphics.Paint"
+import "function"
 import "anime"
 import "popup"
 a=0
@@ -27,7 +29,7 @@ activity.setTitle("Root检测")
 activity.setContentView(loadlayout(layout))
 
 
-
+title.getPaint().setFakeBoldText(true)
 
 if a==0 then
   c0e.setVisibility(View.GONE)
@@ -36,68 +38,6 @@ if a==0 then
 end
 
 
-function 提示(内容,圆角)
-  junyang=
-  {
-    LinearLayout;
-    id="toastb";
-    {
-      CardView;--卡片控件
-      layout_margin='';--卡片边距
-      layout_gravity='horizontal';--重力属性
-      layout_marginBottom='10dp';--布局底距
-      elevation='5dp';--阴影属性
-      layout_width='wrap';--卡片宽度
-      CardBackgroundColor='#FF757575';--卡片背景颜色
-      layout_height='wrap';--卡片高度
-      radius=圆角..'dp';--卡片圆角
-      {
-        TextView;--文字控件
-        background="#ff36373C";--背景颜色
-        padding="8dp";
-        textSize="15sp";--文字大小
-        TextColor="#ffffffff";--文字颜色
-        layout_width="fill";--卡片宽度
-        layout_height="fill";--卡片高度
-        gravity="center";--重力
-        text="提示出错";--显示文字
-        id="text_ts";
-      };
-    };
-  };
-  local toast=Toast.makeText(activity,"内容",Toast.LENGTH_SHORT).setView(loadlayout(junyang))
-  toast.setGravity(Gravity.BOTTOM,0, 0)
-  text_ts.Text=tostring(内容)
-  toast.show()
-end
-
-
-退出=0
-function onKeyDown(code,event)
-  if string.find(tostring(event),"KEYCODE_BACK") ~= nil then
-    if 退出+2 > tonumber(os.time()) then
-      activity.finish()--退出页面
-     else
-      提示("双击返回键退出",20)
-      退出=tonumber(os.time())
-    end
-    return true
-  end
-end
-
-
-function 过渡加载框(标题,消息,时间)
-  import ("android.app.ProgressDialog");
-  local pd = ProgressDialog.show(this,标题,消息);
-  local id =import "android.os.Build"
-  local dd=id.SERIAL
-  local set=import "android.provider.Settings"
-  local id = set.System.getString(this.getContentResolver(), "android_id")
-  local codeid =dd..id
-  task(时间,function()
-    pd.dismiss();
-  end)
-end
 --状态栏沉浸透明
 import "android.graphics.Color"
 local window=this.getWindow()
@@ -114,9 +54,11 @@ end
 if isNightMode() then
   import "android.graphics.drawable.ColorDrawable"
   back.setBackgroundDrawable(ColorDrawable(0xff2c2c2c))
+  title.setTextColor(0xfff0f0f0)
  else
   import "android.graphics.drawable.ColorDrawable"
   back.setBackgroundDrawable(ColorDrawable(0xffFAFAFA))
+  title.setTextColor(0xff3f3f3f)
 end
 
 
@@ -130,22 +72,14 @@ c2.onClick=function()
 end
 
 
-c0e.onLongClick=function()
-  activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,50},-1)
-  过渡加载框("刷新中...","",500)
-  task(500,function()
-    activity.recreate()
-  end)
+c0e.onClick=function()
+  activity.newActivity("list")
 end
 
 
 
-c0r.onLongClick=function()
-  activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,50},-1)
-  过渡加载框("刷新中...","",500)
-  task(500,function()
-    activity.recreate()
-  end)
+c0r.onClick=function()
+  activity.newActivity("list")
 end
 
 
@@ -165,24 +99,20 @@ end
 
 c4.onClick=function()
   activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,15},-1)
-  提示("作者：智商封印official",50)
+  提示("作者：智商封印official™",50)
   提示("版本号："..ver,50)
 end
 
 
-c0e.onClick=function()
+c0e.onLongClick=function()
   showPopMenu(tab0e,c0e,"菜单")
 end
 
 
-c0r.onClick=function()
+c0r.onLongClick=function()
   showPopMenu(tab0r,c0r,"菜单")
 end
 
-back.onLongClick=function()
-  activity.getSystemService(Context.VIBRATOR_SERVICE).vibrate(long{0,15},-1)
-  showPopMenu(taback,title,"菜单")
-end
 
 
 --函数
@@ -199,6 +129,8 @@ end
 
 ico.onClick=function()
   波纹(ico,0xff808080)
+  showPopMenu(taback,title,"菜单")
+  缓冲旋转(ico,2500)
 end
 
 

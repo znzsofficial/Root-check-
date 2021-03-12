@@ -151,8 +151,6 @@ tab0e={
       activity.newActivity("chan")
     end,
   },
-  ["返回"]=function()
-  end,
   ["隐藏"]=function()
     水珠动画(c0e,500)
     task(500,function()
@@ -168,8 +166,6 @@ tab0r={
       activity.newActivity("chan")
     end,
   },
-  ["返回"]=function()
-  end,
   ["隐藏"]=function()
     水珠动画(c0r,500)
     task(500,function()
@@ -179,13 +175,11 @@ tab0r={
 }
 
 taback={
-  ["刷新"]=function()
+  ["刷新界面"]=function()
     过渡加载框("刷新中...","",500)
     task(500,function()
       activity.recreate()
     end)
-  end,
-  ["取消"]=function()
   end,
 }
 

@@ -16,20 +16,18 @@ if pcall(function() activity.getPackageManager().getPackageInfo("io.github.lspos
  else
 end
 
+
 import "com.androlua.util.RootUtil"
 local root = RootUtil()
 if root.haveRoot() then
   a=a+1
  else
+  if File("/system/bin/su").exists() then
+    a=a+1
+   else
+  end
 end
 
-
-
-local root,exit,numb=os.execute("su")
-if root==true then
-  a=a+1
- else
-end
 
 
 
@@ -63,11 +61,6 @@ if File("/sdcard/TWRP").exists() then
  else
 end
 
-
-if File("/system/bin/su").exists() then
-  a=a+1
- else
-end
 
 
 
