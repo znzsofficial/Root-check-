@@ -59,6 +59,7 @@ if isNightMode() then
   import "android.graphics.drawable.ColorDrawable"
   back.setBackgroundDrawable(ColorDrawable(0xffFAFAFA))
   title.setTextColor(0xff3f3f3f)
+  this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
 end
 
 
