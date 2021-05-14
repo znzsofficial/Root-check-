@@ -1,11 +1,11 @@
 --名称
 appname="Root检测"
 --版本号
-appver="1.6"
+appver="1.7"
 --版本
-appcode="7"
+appcode="8"
 --SDK
-appsdk="15"
+appsdk="23"
 --包名
 packagename="com.znzs.sute"
 --调试模式

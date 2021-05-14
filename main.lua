@@ -10,7 +10,6 @@ import "android.graphics.Paint"
 import "function"
 import "anime"
 import "popup"
-a=0
 import "check"
 
 xh=Build.MANUFACTURER.." "..Build.MODEL
@@ -63,25 +62,8 @@ if isNightMode() then
 end
 
 
-c1.onClick=function()
-  水珠动画(c1,500)
-end
 
 
-c2.onClick=function()
-  水珠动画(c2,500)
-end
-
-
-c0e.onClick=function()
-  activity.newActivity("list")
-end
-
-
-
-c0r.onClick=function()
-  activity.newActivity("list")
-end
 
 
 
@@ -105,42 +87,34 @@ c4.onClick=function()
 end
 
 
-c0e.onLongClick=function()
+c0e.onClick=function()
   showPopMenu(tab0e,c0e,"菜单")
 end
 
 
-c0r.onLongClick=function()
+c0r.onClick=function()
   showPopMenu(tab0r,c0r,"菜单")
 end
 
 
 
---函数
-function 波纹(id,颜色)
-  import "android.content.res.ColorStateList"
-  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless}
-  local typedArray =activity.obtainStyledAttributes(attrsArray)
-  ripple=typedArray.getResourceId(0,0)
-  Pretend=activity.Resources.getDrawable(ripple)
-  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))
-  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))
-end
---用法
 
 ico.onClick=function()
-  波纹(ico,0xff808080)
   showPopMenu(taback,title,"菜单")
   缓冲旋转(ico,2500)
 end
 
 
-device.onClick=function()
-  波纹(device,0xff808080)
+function 波纹特效v2(颜色)
+  import"android.content.res.ColorStateList"
+  return activity.Resources.getDrawable(activity.obtainStyledAttributes({android.R.attr.selectableItemBackground--[[Borderless]]}).getResourceId(0,0))
+  .setColor(ColorStateList(int[0]
+  .class{int{}},int{颜色 or 0x20000000}))
 end
 
+c3.foreground=波纹特效v2(0xff666666)
 
-ndro.onClick=function()
-  波纹(ndro,0xff808080)
-end
+c4.foreground=波纹特效v2(0xff666666)
 
+c0r.foreground=波纹特效v2(0x22000000)
+c0e.foreground=波纹特效v2(0x22000000)
